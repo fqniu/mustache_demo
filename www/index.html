@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div>我是index.html</div>
+  <script src="/xuni/bundle.js"></script>
+  <script>
+    // var templateStr = `<h1>我今天很{{mood}},明天也一样{{mood}}</h1>`
+    var templateStr = `
+    <div>
+      <ol>
+        {{#arr}}
+          <li class="item">
+            <div>姓名：{{name}}</div>
+            <div>年龄：{{age}}</div>
+            <div>性别：{{sex}}</div>
+            <ol>
+              {{#hobbies}}
+              <li>{{.}}</li>
+              {{/hobbies}}
+            </ol>
+          </li>
+        {{/arr}}
+      </ol>
+    <div>
+    `
+    var data = {
+      arr:[
+        {name:'fqniu',age:'25',sex:'boy',hobbies:['游泳','健身']},
+        {name:'niuniu',age:'19',sex:'boy1',hobbies:['游泳1','健身1']},
+      ]
+    }
+
+    // var templateStr = '我爱{{things}},{{things}}也好吃！';
+    // var data = {
+    //   things:'做饭'
+    // }
+
+    var domStr = mt_templateEngine.render(templateStr,data)
+    console.log(domStr);
+  </script>
+</body>
+</html>
